@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" media="all" />
+        <style media="screen">
+            p {
+                margin: 0px;
+            }
+
+            .error{
+                color: red;
+            }
+            .success{
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Register</h1>
+        {%if messages %}
+            {% for message in messages %}
+                <p class='{{message.tags}}'>{{message}}</p>
+            {%endfor%}
+        {%endif%}
+        <form class="" action="/register/create" method="post">
+            {% csrf_token %}
+            <p>Email Address:</p>
+            <input type="text" name="email"><br>
+            <p>First Name:</p>
+            <input type="text" name="f_name"><br>
+            <p>Last Name:</p>
+            <input type="text" name="l_name"><br>
+            <p>Password:</p>
+            <input type="password" name="password"><br>
+            <p>Confirm Password:</p>
+            <input type="password" name="c_password"><br>
+            <input type="submit" value="register">
+        </form>
+        <hr>
+        <h1>Log In</h1>
+        <form action="login" method="post">
+            {% csrf_token %}
+            <p>Email Address:</p>
+            <input type="text" name="email"><br>
+            <p>Password:</p>
+            <input type="password" name="password"><br>
+            <input type="submit" value="Sign In">
+        </form>
+    </body>
+</html>
